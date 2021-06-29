@@ -17,3 +17,7 @@ Follow the steps below to install and run the project in your environment:
 - Run `yarn` to install the dependencies (this is equivalent to `yarn install`)
 - Run `yarn start` to run the project
 - Copy the URL displayed in your console and open it in your preferred browser
+
+## Decisions
+
+- Replaced bootstrap's reboot for normalize.css because it's focused on CSS resetting while also having a smaller bundle size

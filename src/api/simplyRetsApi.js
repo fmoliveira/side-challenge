@@ -47,16 +47,19 @@ export function usePropertyListings() {
 
   // normalize properties data by picking only what we need
   const normalizeProperties = (data) =>
-    data.map(({ mlsId, property, listPrice, listDate, address, photos }) => ({
-      mlsId,
-      area: property.area,
-      bedrooms: property.bedrooms,
-      baths: property.bathsFull + property.bathsHalf * 0.5,
-      address,
-      listPrice,
-      listDate,
-      picture: photos?.[0],
-    }));
+    data.map(
+      ({ mlsId, property, listPrice, listDate, address, photos, remarks }) => ({
+        mlsId,
+        area: property.area,
+        bedrooms: property.bedrooms,
+        baths: property.bathsFull + property.bathsHalf * 0.5,
+        address,
+        listPrice,
+        listDate,
+        picture: photos?.[0],
+        remarks,
+      }),
+    );
 
   // fetch listings from cache-first and then the api
   const fetchPropertyListings = async () => {

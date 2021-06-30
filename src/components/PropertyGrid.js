@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const PropertyGrid = styled.section`
-  margin: 30px 60px;
   display: grid;
   grid-gap: 60px;
 

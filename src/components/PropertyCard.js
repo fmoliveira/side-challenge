@@ -37,10 +37,12 @@ const Price = styled.div`
 
 const Address = styled.div`
   margin-top: 0.3rem;
+  padding: 0.5em 0;
   font-size: 0.94rem;
 `;
 
 const ListDate = styled.div`
+  padding: 0.5em 0;
   font-size: 0.85rem;
   color: ${(props) => props.theme.colors.grayedText};
 `;

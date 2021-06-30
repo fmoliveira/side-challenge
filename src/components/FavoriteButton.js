@@ -20,7 +20,7 @@ export default function FavoriteButton({ isFavorite, onChange }) {
 
   return (
     <Button onClick={() => onChange?.(!isFavorite)}>
-      <img src={icon} alt="" />
+      <img src={icon} alt={isFavorite ? 'Remove favorite' : 'Add favorite'} />
     </Button>
   );
 }

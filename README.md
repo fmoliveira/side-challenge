@@ -24,4 +24,5 @@ Follow the steps below to install and run the project in your environment:
 - Removed redundant `react-router` core package as its own documentation recommends to not install it directly
 - Replaced bootstrap's reboot for normalize.css because it's focused on CSS resetting while also having a smaller bundle size
 - Switched grayed out text color #979797 from design to the closest AA-compliant color which turned out to be #757575
+- Mocked `window.fetch` for controlled integration tests, ideally we should use `msw` to mock requests in a more decoupled way, and in addition, use end-to-end tests to cover integration tests with the real backend API
 - Design didn't have scales for paddings, so I've picked a close enough scale in em/rem units

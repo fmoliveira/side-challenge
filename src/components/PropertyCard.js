@@ -44,7 +44,7 @@ const Address = styled.div`
 const ListDate = styled.div`
   padding: 0.5em 0;
   font-size: 0.85rem;
-  color: ${(props) => props.theme.colors.grayedText};
+  color: ${(props) => props.theme?.colors?.grayedText};
 `;
 
 export default function PropertyCard({

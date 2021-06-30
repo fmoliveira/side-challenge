@@ -6,7 +6,7 @@ export default function BlankState({ isLoading, error }) {
   if (error) {
     return (
       <div>
-        <h1>We're sorry about that</h1>
+        <h2>We're sorry about that</h2>
         <p>There was a problem on our end loading the properties</p>
         <p>Please refresh the page to try again</p>
       </div>

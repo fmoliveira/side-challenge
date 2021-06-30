@@ -45,6 +45,19 @@ export function usePropertyListings() {
   const [data, setData] = useState(() => getCachedListings() ?? []);
   const [status, setStatus] = useState('pending');
 
+  // normalize properties data by picking only what we need
+  const normalizeProperties = (data) =>
+    data.map(({ mlsId, property, listPrice, listDate, address, photos }) => ({
+      mlsId,
+      area: property.area,
+      bedrooms: property.bedrooms,
+      baths: property.bathsFull + property.bathsHalf * 0.5,
+      address,
+      listPrice,
+      listDate,
+      picture: photos?.[0],
+    }));
+
   // fetch listings from cache-first and then the api
   const fetchPropertyListings = async () => {
     // try to get from the local storage cache
@@ -61,9 +74,9 @@ export function usePropertyListings() {
 
     // try to fetch from the api
     try {
-      const data = await fetch(`${BASE_URL}/properties`, { headers }).then(
-        (res) => res.json(),
-      );
+      const data = await fetch(`${BASE_URL}/properties`, { headers })
+        .then((res) => res.json())
+        .then(normalizeProperties);
       setData(data);
       setStatus('success');
       setCachedListings(data);

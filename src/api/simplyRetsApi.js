@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const BASE_URL = 'https://api.simplyrets.com';
 const LOGIN = process.env.REACT_APP_SIMPLYRETS_LOGIN;
@@ -62,7 +62,7 @@ export function usePropertyListings() {
     );
 
   // fetch listings from cache-first and then the api
-  const fetchPropertyListings = async () => {
+  const fetchPropertyListings = useCallback(async () => {
     // try to get from the local storage cache
     try {
       const data = getCachedListings();
@@ -86,10 +86,10 @@ export function usePropertyListings() {
     } catch (error) {
       setStatus('error');
     }
-  };
+  }, []);
 
   // fetch listings when initializing hook
-  useEffect(() => fetchPropertyListings(), []);
+  useEffect(() => fetchPropertyListings(), [fetchPropertyListings]);
 
   const isLoading = status === 'loading';
   const error = status === 'error';

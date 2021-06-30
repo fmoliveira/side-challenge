@@ -4,11 +4,18 @@ import abbreviateState from '../utils/abbreviateState';
 import formatDate from '../utils/formatDate';
 import formatMoney from '../utils/formatMoney';
 
-const Image = styled.img`
+import FavoriteButton from './FavoriteButton';
+import ScreenReaderText from './ScreenReaderText';
+
+const Picture = styled.div`
+  position: relative;
   width: 315px;
   height: 280px;
-  object-fit: cover;
   border-radius: 4px;
+  background-image: url(${(props) => props.src});
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 
 const Details = styled.div`
@@ -48,10 +55,15 @@ export default function PropertyCard({
   listDate,
   picture,
   remarks,
+  isFavorite,
+  onChangeFavorite,
 }) {
   return (
     <div>
-      <Image src={picture} alt={remarks} />
+      <Picture src={picture}>
+        <FavoriteButton isFavorite={isFavorite} onChange={onChangeFavorite} />
+        <ScreenReaderText>{remarks}</ScreenReaderText>
+      </Picture>
       <Details>
         <span>{bedrooms} BR</span>
         <span>{baths} Bath</span>

@@ -1,4 +1,5 @@
 import { usePropertyListings } from '../api/simplyRetsApi';
+import { useFavorites } from '../api/localState';
 
 import Header from '../components/Header';
 import Container from '../components/Container';
@@ -8,6 +9,7 @@ import PropertyCard from '../components/PropertyCard';
 
 export default function PropertyListings() {
   const { isLoading, data, error } = usePropertyListings();
+  const [favorites, setFavorite] = useFavorites();
 
   return (
     <div>
@@ -16,7 +18,14 @@ export default function PropertyListings() {
         <BlankState isLoading={isLoading} error={error} />
         <PropertyGrid>
           {data.map((property) => (
-            <PropertyCard key={property.mlsId} {...property} />
+            <PropertyCard
+              key={property.mlsId}
+              {...property}
+              isFavorite={favorites[property.mlsId]}
+              onChangeFavorite={(isFavorite) =>
+                setFavorite(property.mlsId, isFavorite)
+              }
+            />
           ))}
         </PropertyGrid>
       </Container>

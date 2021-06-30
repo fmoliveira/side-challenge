@@ -13,7 +13,9 @@ export default function PropertyListings() {
 
   return (
     <div>
-      <Header>Property Listings</Header>
+      <Header>
+        <Container>Property Listings</Container>
+      </Header>
       <Container>
         <BlankState isLoading={isLoading} error={error} />
         <PropertyGrid>

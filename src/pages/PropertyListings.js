@@ -1,6 +1,8 @@
 import { usePropertyListings } from '../api/simplyRetsApi';
 
 import Header from '../components/Header';
+import PropertyGrid from '../components/PropertyGrid';
+import PropertyCard from '../components/PropertyCard';
 
 export default function PropertyListings() {
   const { isLoading, data, error } = usePropertyListings();
@@ -8,7 +10,11 @@ export default function PropertyListings() {
   return (
     <div>
       <Header>Property Listings</Header>
-      <p>Listing {data.length} properties</p>
+      <PropertyGrid>
+        {data.map((property) => (
+          <PropertyCard key={property.mlsId} {...property} />
+        ))}
+      </PropertyGrid>
     </div>
   );
 }

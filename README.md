@@ -24,5 +24,16 @@ Follow the steps below to install and run the project in your environment:
 - Removed redundant `react-router` core package as its own documentation recommends to not install it directly
 - Replaced bootstrap's reboot for normalize.css because it's focused on CSS resetting while also having a smaller bundle size
 - Switched grayed out text color #979797 from design to the closest AA-compliant color which turned out to be #757575
-- Mocked `window.fetch` for controlled integration tests, ideally we should use `msw` to mock requests in a more decoupled way, and in addition, use end-to-end tests to cover integration tests with the real backend API
+- Did not written unit tests for UI components because it would take too much time for very little value
+- Written only integration tests for the Property Listings page because they add a good value for the time investment, the next component I'd tests for is `PropertyCard`
+- Mocked `window.fetch` for controlled integration tests (ensure that the required property fields are displayed)
 - Design didn't have scales for paddings, so I've picked a close enough scale in em/rem units
+
+## What's next?
+
+- Write end-to-end test for the Property Listings page and test with the real backend API
+- Configure continuous integration with GitHub actions to run jest and end-to-end tests
+- Set up [Storybook](https://storybook.js.org/), create stories for all UI components, and configure a [Chromatic](https://www.chromatic.com/) account with continuous integration on GitHbu actions, so that we would
+- Apply global styles from styled-components and create an appropriate theme for all basic text and background colors, to allow for simpler theme customization
+- Replace `window.fetch` mocking for a more decoupled mocking solution like [msw](https://mswjs.io/)
+- Write unit test for the `PropertyCard` component, low investment and a fine investment (any regression would prevent hitting Chromatic, saving unnecessary runs that will definitely fail)

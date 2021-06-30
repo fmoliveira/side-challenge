@@ -14,6 +14,7 @@ Pre-requisites:
 Follow the steps below to install and run the project in your environment:
 
 - Clone the repository
+- Copy the `.env.example` file into `.env` and modify the test credentials if necessary
 - Run `yarn` to install the dependencies (this is equivalent to `yarn install`)
 - Run `yarn start` to run the project
 - Copy the URL displayed in your console and open it in your preferred browser
